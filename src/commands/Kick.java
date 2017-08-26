@@ -35,7 +35,7 @@ public class Kick implements Command {
                 Member member = guild.getMember(user);
              
                 if (!selfMember.canInteract(member)) {
-                	message.getChannel().sendMessage("Cannot kicked member: " + member.getEffectiveName() +", they are higher " + "in the hierachy than I am!").queue();
+                	message.getChannel().sendMessage("Cannot kick member: " + member.getEffectiveName() +", they are higher " + "in the hierarchy than I am!").queue();
                     continue;   //Continue to the next mentioned user to be kicked.
                 }
 
