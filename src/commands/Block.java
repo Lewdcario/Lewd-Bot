@@ -7,6 +7,14 @@ import structures.Command;
 public class Block implements Command {
 	public final String name = "block";
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String[] getAliases() {
+		return this.aliases;
+	}
+	
 	public void run(Message message) {
 		//This is an example of how to use the complete() method on RestAction. The complete method acts similarly to how
         // JDABuilder's buildBlocking works, it waits until the request has been sent before continuing execution.

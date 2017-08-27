@@ -71,7 +71,7 @@ public class MessageHandler extends ListenerAdapter {
         Command command = Bot.commands.get("commands." + name);
         if (command != null) {
         	command.run(message);
-        	System.out.println("COMMAND in " + message.getChannel().getName());
+        	System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
         	return;
         }
     }

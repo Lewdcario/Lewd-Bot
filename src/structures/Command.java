@@ -7,6 +7,9 @@ public interface Command {
 	public String[] aliases = null;
 	public Argument[] Args = null;
 	public String name = null;
+	
+	public String getName();
+	public String[] getAliases();
 	public void run(Message message);
 }
 

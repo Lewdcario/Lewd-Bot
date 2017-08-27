@@ -43,13 +43,13 @@ public class Bot extends JDABuilder {
 	private Bot loadCommands() throws SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException {
 		final long startTime = System.nanoTime();
 
-		Reflections reflections = new Reflections("commands", new SubTypesScanner(false));
-		Set<Class<? extends Object>> allClasses = reflections.getSubTypesOf(Object.class);
+		Reflections reflections = new Reflections("commands", new SubTypesScanner(true));
+		Set<Class<? extends Command>> allClasses = reflections.getSubTypesOf(Command.class);
 		
-		Iterator<Class<? extends Object>> iterator = allClasses.iterator();
+		Iterator<Class<? extends Command>> iterator = allClasses.iterator();
 	    while (iterator.hasNext()) {
 	    	Class<? extends Object> commandClass = iterator.next();
-	        String name = commandClass.getName();    
+	        String name = commandClass.getName();
 	        Class<?> myClass = Class.forName(name);
 			Command instance = (Command) myClass.newInstance();
 			

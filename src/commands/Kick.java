@@ -14,6 +14,15 @@ public class Kick implements Command {
 	public final String name = "kick";
 	public final String[] aliases = { "k" };
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String[] getAliases() {
+		return this.aliases;
+	}
+	
+	// TODO: Fix permission checks that aren't working??
 	public void run(Message message) {
 		if (!message.getMember().hasPermission(Permission.KICK_MEMBERS)) {
 			message.getChannel().sendMessage("You do not have the `KICK_MEMBERS` permission.");

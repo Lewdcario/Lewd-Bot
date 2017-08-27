@@ -13,8 +13,15 @@ import java.util.List;
 public class Ban implements Command {
     public final String name = "Ban";
     public final String[] aliases = { "b" };
+    
+    public String getName() {
+		return this.name;
+	}
+    
+    public String[] getAliases() {
+		return this.aliases;
+	}
 
-    @Override
     public void run(Message message) {
         if (!message.getMember().hasPermission(Permission.BAN_MEMBERS)) {
             message.getChannel().sendMessage("You do not have the `BAN_MEMBERS` permission.");

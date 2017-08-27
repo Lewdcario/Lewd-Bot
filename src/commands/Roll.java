@@ -9,6 +9,14 @@ public class Roll implements Command {
 	public final String name = "roll";
 	public final String[] aliases = { "r" };
 	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String[] getAliases() {
+		return this.aliases;
+	}
+	
 	public void run(Message message) {
 		Random rand = new Random();
         int roll = rand.nextInt(6) + 1;
