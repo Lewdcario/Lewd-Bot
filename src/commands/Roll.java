@@ -5,7 +5,7 @@ import java.util.Random;
 import net.dv8tion.jda.core.entities.Message;
 import structures.Command;
 
-public class Roll implements Command {
+public class Roll extends Command {
 	public final String name = "roll";
 	public final String[] aliases = { "r" };
 	

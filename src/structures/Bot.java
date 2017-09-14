@@ -20,7 +20,9 @@ import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
 public class Bot extends JDABuilder {
-	public static Map<String, Command> commands = new HashMap<String, Command>();
+	public static Map<String, Command> commands = new HashMap<>();
+	public static Map<String, String> aliases = new HashMap<>();
+
 
 	public Bot(AccountType accountType) {
 		super(accountType);
@@ -48,12 +50,15 @@ public class Bot extends JDABuilder {
 		
 		Iterator<Class<? extends Command>> iterator = allClasses.iterator();
 	    while (iterator.hasNext()) {
-	    	Class<? extends Object> commandClass = iterator.next();
+	    	Class<?> commandClass = iterator.next();
 	        String name = commandClass.getName();
 	        Class<?> myClass = Class.forName(name);
 			Command instance = (Command) myClass.newInstance();
 			
 			Bot.commands.put(name, instance);
+			for (String alias: instance.getAliases()){
+				Bot.aliases.put(alias, name);
+			}
 			
 			/*
 			Class<?>[] cArg = new Class[1];

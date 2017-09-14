@@ -3,14 +3,29 @@ package structures;
 import net.dv8tion.jda.core.entities.Message;
 
 // TODO: Make this a class to extend
-public interface Command {
+public class Command {
 	public String[] aliases = null;
 	public Argument[] Args = null;
 	public String name = null;
-	
-	public String getName();
-	public String[] getAliases();
-	public void run(Message message);
+
+	public String getName() {
+		System.out.println("This class does not implement a getName() method.");
+		return this.name;
+	}
+
+	public String[] getAliases() {
+		System.out.println("This class does not implement a getAliases() method.");
+		return this.aliases;
+	}
+
+	public void run(Message message) {
+		System.out.println("This class does not implement a run() method.");
+	}
+
+	public void run(Message message, String[] args) {
+		System.out.println("This class does not implement a run() method.");
+	}
+
 }
 
 interface Argument {

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bot.tutorial</groupId>
-    <artifactId>TutorialBot</artifactId>
+    <artifactId>Lewd Bot</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <sourceDirectory>src</sourceDirectory>
@@ -104,7 +104,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>3.1.0_204</version>
+            <version>3.3.0_266</version>
             <scope>compile</scope>
         </dependency>
         <dependency>

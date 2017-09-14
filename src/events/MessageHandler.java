@@ -41,7 +41,8 @@ public class MessageHandler extends ListenerAdapter {
         Message message = event.getMessage();           //The message that was received.
         // MessageChannel channel = event.getChannel();    //This is the MessageChannel that the message was sent to.
                                                         //  This could be a TextChannel, PrivateChannel, or Group!
-        final String content = message.getContent();  
+        final String content = message.getContent();
+        if (author.isBot()) return; // don't want commands to run if its a bot
                                                        
         if (event.isFromType(ChannelType.TEXT)) {
             Guild guild = event.getGuild();             //The Guild that this message was sent in. (note, in the API, Guilds are Servers)
@@ -73,6 +74,14 @@ public class MessageHandler extends ListenerAdapter {
         	command.run(message);
         	System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
         	return;
+        }
+        else {
+			command = Bot.commands.get(Bot.aliases.get(name.toLowerCase()));
+            if (command != null) {
+				command.run(message);
+				System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
+				return;
+			}
         }
     }
 }

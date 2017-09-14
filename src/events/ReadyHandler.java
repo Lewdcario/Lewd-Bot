@@ -8,6 +8,6 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
 public class ReadyHandler extends ListenerAdapter {
 	@Override
 	public void onReady(ReadyEvent event) {
-		System.out.println("Logged in and ready to serve!");
+		System.out.println("LEWD BOT: Logged in and ready to serve!");
 	}
 }

@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.exceptions.PermissionException;
 import structures.Command;
 
-public class Kick implements Command {
+public class Kick extends Command {
 	public final String name = "kick";
 	public final String[] aliases = { "k" };
 	

@@ -10,7 +10,7 @@ import structures.Command;
 
 import java.util.List;
 
-public class Ban implements Command {
+public class Ban extends Command {
     public final String name = "Ban";
     public final String[] aliases = { "b" };
     
@@ -24,7 +24,7 @@ public class Ban implements Command {
 
     public void run(Message message) {
         if (!message.getMember().hasPermission(Permission.BAN_MEMBERS)) {
-            message.getChannel().sendMessage("You do not have the `BAN_MEMBERS` permission.");
+            message.getChannel().sendMessage("You do not have the `BAN_MEMBERS` permission.").queue();
         }
         if (message.getMentionedUsers().isEmpty()) {
             message.getChannel().sendMessage("You must mention 1 or more users to be banned!").queue();
