@@ -19,16 +19,16 @@ import net.dv8tion.jda.core.JDABuilder;
 import net.dv8tion.jda.core.entities.Game;
 import net.dv8tion.jda.core.exceptions.RateLimitedException;
 
-public class Bot extends JDABuilder {
+public class LewdBot extends JDABuilder {
 	public static Map<String, Command> commands = new HashMap<>();
 	public static Map<String, String> aliases = new HashMap<>();
 
 
-	public Bot(AccountType accountType) {
+	public LewdBot(AccountType accountType) {
 		super(accountType);
 		Config.loadFile();
 		super
-			.setGame(Game.of("Java Bot :]"))
+			.setGame(Game.of("Java LewdBot :]"))
 			.setToken(Config.TOKEN)
 			.addEventListener(new MessageHandler())
 			.addEventListener(new ReadyHandler());
@@ -42,7 +42,7 @@ public class Bot extends JDABuilder {
 	}
 
 
-	private Bot loadCommands() throws SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException {
+	private LewdBot loadCommands() throws SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException {
 		final long startTime = System.nanoTime();
 
 		Reflections reflections = new Reflections("commands", new SubTypesScanner(true));
@@ -50,14 +50,13 @@ public class Bot extends JDABuilder {
 		
 		Iterator<Class<? extends Command>> iterator = allClasses.iterator();
 	    while (iterator.hasNext()) {
-	    	Class<?> commandClass = iterator.next();
+	    	Class<? extends Command> commandClass = iterator.next();
 	        String name = commandClass.getName();
-	        Class<?> myClass = Class.forName(name);
-			Command instance = (Command) myClass.newInstance();
+			Command instance = (Command) Class.forName(name).newInstance();
 			
-			Bot.commands.put(name, instance);
+			LewdBot.commands.put(name, instance);
 			for (String alias: instance.getAliases()){
-				Bot.aliases.put(alias, name);
+				LewdBot.aliases.put(alias, name);
 			}
 			
 			/*

@@ -10,7 +10,7 @@ import net.dv8tion.jda.core.entities.TextChannel;
 import net.dv8tion.jda.core.entities.User;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-import structures.Bot;
+import structures.LewdBot;
 import structures.Command;
 
 public class MessageHandler extends ListenerAdapter {
@@ -69,14 +69,14 @@ public class MessageHandler extends ListenerAdapter {
         String name = content.substring(1, content.length()).split(" ")[0];
         name = new String("" + name.charAt(0)).toUpperCase() + name.substring(1, name.length());
 
-        Command command = Bot.commands.get("commands." + name);
+        Command command = LewdBot.commands.get("commands." + name);
         if (command != null) {
         	command.run(message);
         	System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
         	return;
         }
         else {
-			command = Bot.commands.get(Bot.aliases.get(name.toLowerCase()));
+			command = LewdBot.commands.get(LewdBot.aliases.get(name.toLowerCase()));
             if (command != null) {
 				command.run(message);
 				System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
