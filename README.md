@@ -1,4 +1,7 @@
-Lewd Bot
+## Lewd Bot
 
-Insert token in src.config.txt
-Launch Bot via src.window.Launcher
+### How to run this great bot
+* Insert token in `src.config.txt`
+* Launch Bot via `src.main.Window`
+* Press **LOGIN**
+* Press **LOG THE FUCK OUT** to log out
