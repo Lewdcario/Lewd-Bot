@@ -1,51 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="main.Window">
-  <grid id="27dc6" binding="Frame" layout-manager="GridBagLayout">
+  <grid id="27dc6" binding="Main" layout-manager="GridBagLayout">
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="13" width="515" height="524"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-9932101"/>
+      <enabled value="true"/>
+      <font name="Lucida Sans Typewriter" style="1"/>
+      <foreground color="-15214388"/>
+      <toolTipText value="this bot is good"/>
+    </properties>
     <border type="none"/>
     <children>
-      <hspacer id="5b1a6">
+      <grid id="b1c65" binding="background" custom-create="true" layout-manager="GridBagLayout">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
+          <grid row="0" column="0" row-span="2" col-span="2" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="500.0" weighty="500.0"/>
         </constraints>
-      </hspacer>
-      <vspacer id="bc4c0">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-      </vspacer>
-      <component id="97a5" class="javax.swing.JButton" binding="LOGINButton" default-binding="true">
-        <constraints>
-          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="LOGIN"/>
-        </properties>
-      </component>
-      <component id="c6db8" class="javax.swing.JButton" binding="LOGTHEFUCKOUTButton" default-binding="true">
-        <constraints>
-          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="LOG THE FUCK OUT"/>
-        </properties>
-      </component>
-      <component id="5cf53" class="javax.swing.JLabel" binding="lewdBotLabel">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-          <gridbag weightx="0.0" weighty="0.0"/>
-        </constraints>
-        <properties>
-          <text value="Lewd Bot"/>
-        </properties>
-      </component>
+        <properties/>
+        <border type="bevel-raised"/>
+        <children>
+          <component id="ed758" class="javax.swing.JButton" binding="GTFOButton" default-binding="true">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0" ipady="50"/>
+            </constraints>
+            <properties>
+              <font name="Arial Black" size="18"/>
+              <text value="LOG THE FUCK OUT"/>
+            </properties>
+          </component>
+          <component id="552c9" class="javax.swing.JButton" binding="LOGINButton" default-binding="true">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0" ipady="50"/>
+            </constraints>
+            <properties>
+              <font name="Arial Black" size="18"/>
+              <text value="LOG THE FUCK IN FAG"/>
+            </properties>
+          </component>
+          <component id="59f1d" class="javax.swing.JTextPane" binding="TOKENBITCHTextPane" default-binding="true">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties>
+              <font name="Arial Black" size="18"/>
+              <foreground color="-16777216"/>
+              <text value="TOKEN BITCH"/>
+            </properties>
+          </component>
+          <component id="c2416" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+            <properties/>
+          </component>
+          <vspacer id="24729">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <gridbag weightx="0.0" weighty="0.0"/>
+            </constraints>
+          </vspacer>
+        </children>
+      </grid>
     </children>
   </grid>
 </form>
