@@ -28,7 +28,8 @@ public class Launcher {
 			backgroundImage = ImageIO.read(new File(fileName));
 			Launcher.width = backgroundImage.getWidth(this);
 			Launcher.height = backgroundImage.getHeight(this);
-		}		public void paintComponent(Graphics g) {
+		}
+		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(backgroundImage, 0, 0, this);
 		}
@@ -52,7 +53,7 @@ public class Launcher {
 			}
 		}
 		catch (Exception e) {
-			// If Nimbus is not available, you can set the GUI to another look and feel.
+			// Unavailable look and feel
 		}
 	}
 

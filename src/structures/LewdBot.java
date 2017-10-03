@@ -23,7 +23,6 @@ public class LewdBot extends JDABuilder {
 	public static Map<String, Command> commands = new HashMap<>();
 	public static Map<String, String> aliases = new HashMap<>();
 
-
 	public LewdBot(AccountType accountType) {
 		super(accountType);
 		Config.loadFile();
@@ -40,8 +39,7 @@ public class LewdBot extends JDABuilder {
 		}
 		
 	}
-
-
+	
 	private LewdBot loadCommands() throws SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, ClassNotFoundException, NoSuchMethodException {
 		final long startTime = System.nanoTime();
 
