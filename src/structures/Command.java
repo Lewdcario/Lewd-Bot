@@ -6,6 +6,7 @@ public class Command {
 	public String[] aliases = null;
 	public Argument[] Args = null;
 	public String name = null;
+	public String[] template = null;
 
 	public String getName() {
 		System.err.println("This class does not implement a getName() method.");
@@ -17,11 +18,16 @@ public class Command {
 		return this.aliases;
 	}
 
+	public String[] getTemplate() {
+		System.err.println("This class does not implement a getTemplate() method.");
+		return this.template;
+	}
+
 	public void run(Message message) {
 		System.err.println("This class does not implement a run() method.");
 	}
 
-	public void run(Message message, String[] args) {
+	public void run(Message message, Object[] args) {
 		System.err.println("This class does not implement a run() method.");
 	}
 

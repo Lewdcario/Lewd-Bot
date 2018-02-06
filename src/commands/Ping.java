@@ -5,7 +5,7 @@ import structures.Command;
 
 public class Ping extends Command {
 	private String name = "ping";
-	public String[] aliases = { "p" };
+	private String[] aliases = { "p" };
 	
 	public String getName() {
 		return this.name;
@@ -15,7 +15,7 @@ public class Ping extends Command {
 		return this.aliases;
 	}
 	
-	public void run(Message message) {
+	public void run(Message message, Object[] args) {
 		message.getChannel().sendMessage("pong!").queue();
 	}
 }

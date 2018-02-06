@@ -11,8 +11,8 @@ import net.dv8tion.jda.core.exceptions.PermissionException;
 import structures.Command;
 
 public class Kick extends Command {
-	public final String name = "kick";
-	public final String[] aliases = { "k" };
+	private final String name = "kick";
+	private final String[] aliases = { "k" };
 	
 	public String getName() {
 		return this.name;
@@ -23,7 +23,7 @@ public class Kick extends Command {
 	}
 	
 	// TODO: Fix permission checks that aren't working??
-	public void run(Message message) {
+	public void run(Message message, Object[] args) {
 		if (!message.getMember().hasPermission(Permission.KICK_MEMBERS)) {
 			message.getChannel().sendMessage("You do not have the `KICK_MEMBERS` permission.");
 		}

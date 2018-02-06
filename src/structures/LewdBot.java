@@ -56,25 +56,6 @@ public class LewdBot extends JDABuilder {
 			for (String alias: instance.getAliases()){
 				LewdBot.aliases.put(alias, name);
 			}
-			
-			/*
-			Class<?>[] cArg = new Class[1];
-			cArg[0] = String.class;
-			Method x = myClass.getMethod("run", cArg);
-			
-			Object[] args = {"lewdcario"};
-			x.invoke(instance, args);
-
-			System.out.println(x.toString());
-			*/
-			
-			/*
-	        Class[] types = {Double.TYPE, this.getClass()};
-	        Constructor constructor = myClass.getConstructor(types);
-
-	        Object[] parameters = { new Double(0), this };
-	        Object instanceOfMyClass = constructor.newInstance(parameters);
-	        */
 	    }
 	    
 	    final long stopTime = System.nanoTime();

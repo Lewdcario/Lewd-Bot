@@ -11,8 +11,8 @@ import structures.Command;
 import java.util.List;
 
 public class Ban extends Command {
-    public final String name = "Ban";
-    public final String[] aliases = { "b" };
+    private final String name = "Ban";
+    private final String[] aliases = { "b" };
     
     public String getName() {
 		return this.name;
@@ -22,7 +22,7 @@ public class Ban extends Command {
 		return this.aliases;
 	}
 
-    public void run(Message message) {
+    public void run(Message message, Object[] args) {
         if (!message.getMember().hasPermission(Permission.BAN_MEMBERS)) {
             message.getChannel().sendMessage("You do not have the `BAN_MEMBERS` permission.").queue();
         }
