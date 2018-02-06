@@ -8,16 +8,21 @@ public class CommandHandler {
 	public static void handle(Message message, String content) {
 		String[] args = content.substring(1, content.length()).split(" ");
 		String name = args[0];
-		if (args.length > 1) args = Arrays.toString(args).split(", ",2)[1].split("]")[0].split(", ");
 		name = ("" + name.charAt(0)).toUpperCase() + name.substring(1, name.length());
 
 		Command command = LewdBot.commands.get("commands." + name);
-		if (args.length == 1) {
+		try {
+			command.getTemplate();
 			runCommand(message, command, args);
-		}
-		else {
-			Object[] parsed = CommandParser.parse(message, command.getTemplate(), args);
-			runCommand(message, command, parsed);
+		} catch(NullPointerException e) {
+			args = Arrays.toString(args).split(", ",2)[1].split("]")[0].split(", ");
+			try {
+				Object[] parsed = CommandParser.parse(message, command.getTemplate(), args);
+				runCommand(message, command, parsed);
+			} catch(ClassCastException | NullPointerException err) {
+				message.getChannel().sendMessage("Invalid args~").queue();
+			}
+
 		}
 	}
 

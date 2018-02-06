@@ -25,8 +25,8 @@ public class CommandParser {
 		for (String arg: unparsedArgs) {
 			parsedArgs[i] = CommandParser.handle(message, template[i], arg);
 			if (CommandParser.validate(message, template[i], arg) != true /* && !isDefault */) {
-				message.getChannel().sendMessage("Invalid!");
-				// Find a way to interrupt it
+				message.getChannel().sendMessage("Input for `" + template[i] + "` is invalid.").queue();
+				return null;
 			}
 			i++;
 		}
@@ -37,7 +37,7 @@ public class CommandParser {
 		return true; // TODO: proper checking
 	}
 
-	private static Object handle(Message message, String type, String arg) {
+	private static Object handle(Message message, String type, String arg) throws ClassCastException {
 		if (type == "string") return arg;
 		if (type == "member") return CommandParser.parseMember(message, arg);
 		if (type == "channel") return CommandParser.parseChannel(message, arg);
