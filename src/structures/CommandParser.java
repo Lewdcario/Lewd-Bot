@@ -24,9 +24,17 @@ public class CommandParser {
 		int i = 0;
 		for (String arg: unparsedArgs) {
 			parsedArgs[i] = CommandParser.handle(message, template[i], arg);
+			if (CommandParser.validate(message, template[i], arg) != true /* && !isDefault */) {
+				message.getChannel().sendMessage("Invalid!");
+				// Find a way to interrupt it
+			}
 			i++;
 		}
 		return parsedArgs;
+	}
+
+	private static boolean validate(Message message, String type, String arg) {
+		return true; // TODO: proper checking
 	}
 
 	private static Object handle(Message message, String type, String arg) {

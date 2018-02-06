@@ -4,7 +4,6 @@ import net.dv8tion.jda.core.entities.Message;
 
 public class Command {
 	public String[] aliases = null;
-	public Argument[] Args = null;
 	public String name = null;
 	public String[] template = null;
 
@@ -21,10 +20,6 @@ public class Command {
 	public String[] getTemplate() {
 		System.err.println("This class does not implement a getTemplate() method.");
 		return this.template;
-	}
-
-	public void run(Message message) {
-		System.err.println("This class does not implement a run() method.");
 	}
 
 	public void run(Message message, Object[] args) {
