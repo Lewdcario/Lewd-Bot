@@ -34,12 +34,12 @@ public class MessageHandler extends ListenerAdapter {
         }
         else if (event.isFromType(ChannelType.PRIVATE)) {
             // PrivateChannel privateChannel = event.getPrivateChannel();
-            System.out.printf("[PRIV]<%s>: %s\n", author.getName(), content);
+            System.out.printf("[DM]<%s>: %s\n", author.getName(), content);
         }
         else if (event.isFromType(ChannelType.GROUP)) {
             Group group = event.getGroup();
             String groupName = group.getName() != null ? group.getName() : "";
-            System.out.printf("[GRP: %s]<%s>: %s\n", groupName, author.getName(), content);
+            System.out.printf("[GDM: %s]<%s>: %s\n", groupName, author.getName(), content);
         }
         
         if (!content.startsWith(Config.PREFIX) || !message.isFromType(ChannelType.TEXT) || author.isBot()) return;

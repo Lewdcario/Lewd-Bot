@@ -11,26 +11,31 @@ public class CommandHandler {
 		name = ("" + name.charAt(0)).toUpperCase() + name.substring(1, name.length());
 
 		Command command = LewdBot.commands.get("commands." + name);
-		try {
-			command.getTemplate();
-			runCommand(message, command, args);
-		} catch(NullPointerException e) {
-			args = Arrays.toString(args).split(", ",2)[1].split("]")[0].split(", ");
+		if (command.getTemplate().length == 0) {
 			try {
-				Object[] parsed = CommandParser.parse(message, command.getTemplate(), args);
-				runCommand(message, command, parsed);
-			} catch(ClassCastException | NullPointerException err) {
-				message.getChannel().sendMessage("Invalid args~").queue();
+				runCommand(message, command, args);
+			} catch (Exception e) {
+				message.getChannel().sendMessage("this should not have happened").queue();
+				System.err.println(e.getMessage() + "\n" + e.getStackTrace());
 			}
-
+		}
+		else {
+			Object[] parsedArgs;
+			try {
+				args = Arrays.toString(args).split(", ", 2)[1].split("]")[0].split(", ");
+				// Make class? and cast to that
+				parsedArgs = (Object[])CommandParser.parse(message, command.getTemplate(), args);
+				runCommand(message, command, parsedArgs);
+			} catch (Exception e) {
+				message.getChannel().sendMessage("Missing input for `" + command.getTemplate()[command.getTemplate().length - 1] + "`.").queue();
+			}
 		}
 	}
 
-	private static void runCommand(Message message, Command command, Object[] args) {
+	private static void runCommand(Message message, Command command, Object[] args) throws Exception {
 		if (command != null) {
 			command.run(message, args);
 			System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
-			return;
 		}
 		else {
 			// String casting is hack until I'm not lazy, just don't run commands stupidly for now /s
@@ -38,7 +43,6 @@ public class CommandHandler {
 			if (command != null) {
 				command.run(message, args);
 				System.out.println("COMMAND " + command.getName() + " in " + message.getChannel().getName());
-				return;
 			}
 		}
 	}

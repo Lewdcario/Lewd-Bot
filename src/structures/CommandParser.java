@@ -18,17 +18,23 @@ import net.dv8tion.jda.core.entities.Member;
 import net.dv8tion.jda.core.entities.Message;
 import net.dv8tion.jda.core.entities.TextChannel;
 
-public class CommandParser {
-	public static Object[] parse(Message message, String[] template, String[] unparsedArgs) {
+class CommandParser {
+	static Object parse(Message message, String[] template, String[] unparsedArgs) {
 		Object[] parsedArgs = new Object[template.length];
 		int i = 0;
 		for (String arg: unparsedArgs) {
-			parsedArgs[i] = CommandParser.handle(message, template[i], arg);
-			if (CommandParser.validate(message, template[i], arg) != true /* && !isDefault */) {
+			try {
+				parsedArgs[i] = CommandParser.handle(message, template[i], arg);
+				if (CommandParser.validate(message, template[i], arg) != true /* && !isDefault */) {
+					message.getChannel().sendMessage("Input for `" + template[i] + "` is invalid.").queue();
+					return template;
+				}
+				i++;
+			} catch(Exception e) {
 				message.getChannel().sendMessage("Input for `" + template[i] + "` is invalid.").queue();
-				return null;
+				return template;
 			}
-			i++;
+
 		}
 		return parsedArgs;
 	}
@@ -37,18 +43,18 @@ public class CommandParser {
 		return true; // TODO: proper checking
 	}
 
-	private static Object handle(Message message, String type, String arg) throws ClassCastException {
+	private static Object handle(Message message, String type, String arg) throws Exception {
 		if (type == "string") return arg;
 		if (type == "member") return CommandParser.parseMember(message, arg);
 		if (type == "channel") return CommandParser.parseChannel(message, arg);
 		return null;
 	}
 
-	public static Member parseMember(Message message, String arg) {
+	public static Member parseMember(Message message, String arg) throws Exception {
 		return message.getGuild().getMemberById(Long.parseLong(arg));
 	}
 
-	public static TextChannel parseChannel(Message message, String arg) {
+	public static TextChannel parseChannel(Message message, String arg) throws Exception {
 		return message.getGuild().getTextChannelById(Long.parseLong(arg));
 	}
 }
